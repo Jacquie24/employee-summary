@@ -30,11 +30,23 @@ function init () {
       if (newEntry) {
         createTeam();
       } else {
-          render(employees);
-          console.log(employees);
+        //   render(employees);
+        //   console.log(employees);
+  
+
+    //   writeFile(outputPath, response);
+          fs.writeFile(outputPath, render(employees), "utf8", (err =>
+            err ? console.error(err) : console.log("Your team has been generated!")));
+
+          return;
+          
       }
-    });
+    })
 }
+    // } catch(err) {
+    //   console.log(err); // log error if try does not complete
+    // }
+    
 
 
 function createTeam() {
@@ -175,18 +187,12 @@ function newIntern() {
 //     );
 //   }
   
-  // TODO: Create a function to initialize app
-//   function init() {
-//     inquirer.prompt(questions).then((response) => {
-//       console.log(response);
 
     //   writeFile(outputPath, response);
     // }).catch((err) => {
     //     throw err;
     // });
 
-  // Function call to initialize app
-//   init();
   
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
